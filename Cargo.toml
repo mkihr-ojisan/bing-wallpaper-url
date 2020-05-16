@@ -1,0 +1,16 @@
+[package]
+name = "bing-wallpaper-url"
+version = "0.1.0"
+authors = ["mkihr-ojisan"]
+edition = "2018"
+description = "A crate for getting the url of Bing wallpaper"
+categories = ["web-programming"]
+repository = "https://github.com/mkihr-ojisan/bing-wallpaper-url"
+license = "MIT"
+readme = "README.md"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[dependencies]
+html-extractor = "0.4.0"
+reqwest = "0.10.4"
+tokio = { version = "0.2.21", features = ["macros"] }
