@@ -1,6 +1,6 @@
 [package]
 name = "bing-wallpaper-url"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["mkihr-ojisan"]
 edition = "2018"
 description = "A crate for getting the url of Bing wallpaper"
