@@ -13,7 +13,10 @@ use html_extractor::*;
 pub async fn get_url() -> Result<String, Error> {
     let html = reqwest::get("https://www.bing.com/").await?.text().await?;
     let bing = BingTopPage::extract_from_str(&html)?;
-    Ok(format!("https://www.bing.com{}", bing.wallpaper_url))
+    match &*bing.wallpaper_url {
+        "#" => Err(Error::NotAvailable),
+        url => Ok(format!("https://www.bing.com{}", url)),
+    }
 }
 html_extractor! {
     BingTopPage {
@@ -25,6 +28,7 @@ html_extractor! {
 pub enum Error {
     Network(reqwest::Error),
     InvalidResponse(html_extractor::Error),
+    NotAvailable,
 }
 impl From<reqwest::Error> for Error {
     fn from(e: reqwest::Error) -> Self {
